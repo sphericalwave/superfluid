@@ -1,4 +1,10 @@
-// File: CORS.swift - create this in Sources/MicroExpress
+//
+//  CORS.swift
+//  MicroExpress
+//
+//  Created by Aaron Anthony on 2020-04-22.
+//  Copyright © 2020 Spherical Wave Engineering. All rights reserved.
+//
 
 //FIXME: Free Function
 public func cors(allowOrigin origin: String) -> Middleware

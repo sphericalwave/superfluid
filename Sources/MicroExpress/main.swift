@@ -1,4 +1,11 @@
-// File: main.swift - Add to existing file
+//
+//  main.swift
+//  MicroExpress
+//
+//  Created by Aaron Anthony on 2020-04-22.
+//  Copyright © 2020 Spherical Wave Engineering. All rights reserved.
+//
+
 import NIO
 
 let router = Router()
@@ -15,7 +22,7 @@ let app = Express(host: "localhost", port: 8080, router: router, eventLoops: eve
 //}
 
 //FIXME: what is CORS? // Reusable middleware up here
-app.router.use(querystring, cors(allowOrigin: "*"))
+app.router.use(middleware: querystring, cors(allowOrigin: "*"))
 
 // Logging
 app.router.use { req, res, next in

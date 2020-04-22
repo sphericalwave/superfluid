@@ -1,4 +1,10 @@
-// File: ServerResponse.swift - create this in Sources/MicroExpress
+//
+//  ServerResponse.swift
+//  MicroExpress
+//
+//  Created by Aaron Anthony on 2020-04-22.
+//  Copyright © 2020 Spherical Wave Engineering. All rights reserved.
+//
 
 import NIO
 import NIOHTTP1
@@ -9,11 +15,11 @@ import mustache
 
 open class ServerResponse
 {
-    public  var status         = HTTPResponseStatus.ok  //FIXME: Be Immutable
-    public  var headers        = HTTPHeaders()          //FIXME: Be Immutable
-    public  let channel        : Channel
+    public let channel: Channel
+    public var status = HTTPResponseStatus.ok  //FIXME: Be Immutable
+    public var headers = HTTPHeaders()          //FIXME: Be Immutable
     private var didWriteHeader = false                  //FIXME: Be Immutable
-    private var didEnd         = false                  //FIXME: Be Immutable
+    private var didEnd = false                  //FIXME: Be Immutable
     
     public init(channel: Channel) {
         self.channel = channel

@@ -3,6 +3,7 @@
 //  MicroExpress
 //
 //  Created by Aaron Anthony on 2020-04-22.
+//  Copyright © 2020 Spherical Wave Engineering. All rights reserved.
 //
 
 import NIOHTTP1
@@ -32,8 +33,7 @@ final class HTTPHandler: ChannelInboundHandler
         let res = ServerResponse(channel: channel)
         
         //FIXME: why trigger Router?
-        router.handle(request: req, response: res) {
-            (items : Any...) in // the final handler
+        router.handle(request: req, response: res) { (items : Any...) in // the final handler
             res.status = .notFound
             res.send(s: "No middleware handled the request!")
         }
