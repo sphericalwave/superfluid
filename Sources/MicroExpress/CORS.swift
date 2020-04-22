@@ -8,14 +8,12 @@ public func cors(allowOrigin origin: String) -> Middleware
         res["Access-Control-Allow-Headers"] = "Accept, Content-Type"
         res["Access-Control-Allow-Methods"] = "GET, OPTIONS"
         
-        // we handle the options
+        // handle the options
         if req.header.method == .OPTIONS {
             res["Allow"] = "GET, OPTIONS"
             res.send(s: "")
         }
-        else { // we set the proper headers
-            next()
-        }
+        else { next() } // we set the proper headers
     }
 }
 

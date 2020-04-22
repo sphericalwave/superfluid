@@ -4,8 +4,6 @@ import Foundation
 import NIO
 import NIOHTTP1
 
-//let loopGroup = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)  //FIXME: Global
-
 open class Express
 {
     let router: Router
@@ -29,7 +27,7 @@ open class Express
                 channel.pipeline.configureHTTPServerPipeline().then {
                     channel.pipeline.add(handler: HTTPHandler(router: self.router))
                 }
-        }
+            }
             .childChannelOption(ChannelOptions.socket(IPPROTO_TCP, TCP_NODELAY), value: 1)
             .childChannelOption(reuseAddrOpt, value: 1)
             .childChannelOption(ChannelOptions.maxMessagesPerRead, value: 1)

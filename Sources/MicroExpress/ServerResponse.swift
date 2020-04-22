@@ -89,15 +89,16 @@ open class ServerResponse
     
     //https://www.alwaysrightinstitute.com/microexpress-nio-templates/
     //FIXME: hidden parameter labels
+    //mustache stuff
     func render(pathContext: String = #file, _ template : String, _ options: Any? = nil, files: Files)
     {
-        let res = self
+        let res = self  //FIXME: This is a red flag
         
         // Locate the template file
-        let path = self.path(to: template, ofType: "mustache", in: pathContext) ?? "/dummyDoesNotExist"
+        guard let templateFilePath = self.path(to: template, ofType: "mustache", in: pathContext) else { fatalError() }
         
         // Read the template file
-        files.readFile(path: path) { err, data in
+        files.readFile(path: templateFilePath) { err, data in
             guard var data = data else {
                 res.status = .internalServerError
                 return res.send(s: "Error: \(err as Optional)")
