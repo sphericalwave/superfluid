@@ -1,14 +1,22 @@
 // File: main.swift - Add to existing file
 let app = Express()
 
+//fs.readFile("/etc/passwd") { err, data in
+//  guard let data = data else { return print("Failed:", err) }
+//  print("Read passwd:", data)
+//}
+
 // Reusable middleware up here
-app.use(querystring,
-        cors(allowOrigin: "*"))
+app.use(querystring, cors(allowOrigin: "*"))
 
 // Logging
 app.use { req, res, next in
   print("\(req.header.method):", req.header.uri)
   next() // continue processing
+}
+
+app.get("/todos") { _, res, _ in
+  res.render("Todolist", [ "title": "DoIt!", "todos": todos ])
 }
 
 app.get("/todomvc") { _, res, _ in
@@ -27,6 +35,7 @@ app.get { req, res, _ in
   res.send("Hello, \(text) world!")
 }
 
+
 // start server
-app.listen(1337)
+app.listen(8080)
 

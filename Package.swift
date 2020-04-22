@@ -10,27 +10,10 @@ import PackageDescription
 
 let package = Package(
     name: "MicroExpress",
-//
-//    products: [
-//      .library(name: "MicroExpress", targets: ["MicroExpress"]),
-//    ],
-    
     dependencies: [
-        /* Add your package dependencies in here
-        .package(url: "https://github.com/AlwaysRightInstitute/cows.git",
-                 from: "1.0.0"),
-        */
-        .package(url: "https://github.com/apple/swift-nio.git", 
-                 from: "1.1.0"),
+        //.package(url: "https://github.com/AlwaysRightInstitute/cows.git", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "1.1.0"),
+        .package(url: "https://github.com/AlwaysRightInstitute/mustache.git", from: "0.5.1")
     ],
-
-    targets: [
-        .target(name: "MicroExpress", 
-                dependencies: [
-                  /* Add your target dependencies in here, e.g.: */
-                  // "cows",
-                  "NIO",
-                  "NIOHTTP1",
-                ])
-    ]
+    targets: [ .target(name: "MicroExpress", dependencies: [ "NIO", "NIOHTTP1", "mustache"]) ]
 )
