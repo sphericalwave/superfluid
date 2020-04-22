@@ -30,7 +30,7 @@ final class HTTPHandler: ChannelInboundHandler
             router.handle(request: req, response: res) {
                 (items : Any...) in // the final handler
                 res.status = .notFound
-                res.send("No middleware handled the request!")
+                res.send(s: "No middleware handled the request!")
             }
             
         // ignore incoming content to keep it micro :-)

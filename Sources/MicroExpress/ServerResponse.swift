@@ -20,7 +20,7 @@ open class ServerResponse
     }
     
     /// An Express like `send()` function.
-    open func send(_ s: String) {
+    open func send(s: String) {
         flushHeader()
         
         let utf8   = s.utf8
@@ -29,9 +29,7 @@ open class ServerResponse
         
         let part = HTTPServerResponsePart.body(.byteBuffer(buffer))
         
-        _ = channel.writeAndFlush(part)
-            .mapIfError(handleError)
-            .map { self.end() }
+        _ = channel.writeAndFlush(part).mapIfError(handleError).map { self.end() }
     }
     
     /// Check whether we already wrote the response header.
@@ -54,8 +52,7 @@ open class ServerResponse
     func end() {
         guard !didEnd else { return }
         didEnd = true
-        _ = channel.writeAndFlush(HTTPServerResponsePart.end(nil))
-            .map { self.channel.close() }
+        _ = channel.writeAndFlush(HTTPServerResponsePart.end(nil)).map { self.channel.close() }
     }
 
     /// A more convenient header accessor. Not correct for any header.
@@ -63,28 +60,18 @@ open class ServerResponse
     subscript(name: String) -> String? {
         set {
             assert(!didWriteHeader, "header is out!")
-            if let v = newValue {
-                headers.replaceOrAdd(name: name, value: v)
-            }
-            else {
-                headers.remove(name: name)
-            }
+            if let v = newValue { headers.replaceOrAdd(name: name, value: v) }
+            else { headers.remove(name: name) }
         }
-        get {
-            return headers[name].joined(separator: ", ")
-        }
+        get { return headers[name].joined(separator: ", ") }
     }
     
     /// Send a Codable object as JSON to the client.
-    func json<T: Encodable>(_ model: T) {
+    func json<T: Encodable>(model: T) {
         // create a Data struct from the Codable object
         let data : Data
-        do {
-            data = try JSONEncoder().encode(model)
-        }
-        catch {
-            return handleError(error)
-        }
+        do { data = try JSONEncoder().encode(model) }
+        catch { return handleError(error) }
         
         // setup JSON headers
         self["Content-Type"]   = "application/json"
@@ -97,13 +84,12 @@ open class ServerResponse
         buffer.write(bytes: data)
         let part = HTTPServerResponsePart.body(.byteBuffer(buffer))
         
-        _ = channel.writeAndFlush(part)
-            .mapIfError(handleError)
-            .map { self.end() }
+        _ = channel.writeAndFlush(part).mapIfError(handleError).map { self.end() }
     }
     
     //https://www.alwaysrightinstitute.com/microexpress-nio-templates/
-    func render(pathContext: String = #file, _ template : String, _ options: Any? = nil)
+    //FIXME: hidden parameter labels
+    func render(pathContext: String = #file, _ template : String, _ options: Any? = nil, files: Files)
     {
         let res = self
         
@@ -111,10 +97,10 @@ open class ServerResponse
         let path = self.path(to: template, ofType: "mustache", in: pathContext) ?? "/dummyDoesNotExist"
         
         // Read the template file
-        fs.readFile(path) { err, data in
+        files.readFile(path: path) { err, data in
             guard var data = data else {
                 res.status = .internalServerError
-                return res.send("Error: \(err as Optional)")
+                return res.send(s: "Error: \(err as Optional)")
             }
             
             data.write(bytes: [0]) // cstr terminator
@@ -132,7 +118,7 @@ open class ServerResponse
             
             // Deliver
             res["Content-Type"] = "text/html"
-            res.send(result)
+            res.send(s: result)
         }
     }
     
