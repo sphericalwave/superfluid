@@ -10,7 +10,7 @@
 //The code works but has some flaws (e.g. a large fixed size buffer) which you would fix in a full implementation. For demonstration and low-scale purposes only!
 import NIO
 
-public enum fs  //FIXME:
+public enum fs  //FIXME: What the hell is this?
 {
     static let threadPool : BlockingIOThreadPool = {
         let tp = BlockingIOThreadPool(numberOfThreads: 4)

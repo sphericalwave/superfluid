@@ -1,7 +1,7 @@
 // File: CORS.swift - create this in Sources/MicroExpress
 
-public func cors(allowOrigin origin: String)
-            -> Middleware
+//FIXME: Free Function
+public func cors(allowOrigin origin: String) -> Middleware
 {
   return { req, res, next in
     res["Access-Control-Allow-Origin"]  = origin

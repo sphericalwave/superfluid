@@ -2,14 +2,18 @@
 
 import NIO
 import NIOHTTP1
+import Foundation
+import mustache
 
-open class ServerResponse {
-    
-    public  var status         = HTTPResponseStatus.ok
-    public  var headers        = HTTPHeaders()
+//FIXME: This object is too BIG
+
+open class ServerResponse
+{
+    public  var status         = HTTPResponseStatus.ok  //FIXME: Be Immutable
+    public  var headers        = HTTPHeaders()          //FIXME: Be Immutable
     public  let channel        : Channel
-    private var didWriteHeader = false
-    private var didEnd         = false
+    private var didWriteHeader = false                  //FIXME: Be Immutable
+    private var didEnd         = false                  //FIXME: Be Immutable
     
     public init(channel: Channel) {
         self.channel = channel
@@ -53,13 +57,10 @@ open class ServerResponse {
         _ = channel.writeAndFlush(HTTPServerResponsePart.end(nil))
             .map { self.channel.close() }
     }
-}
 
-public extension ServerResponse {
-    
-    /// A more convenient header accessor. Not correct for
-    /// any header.
-    public subscript(name: String) -> String? {
+    /// A more convenient header accessor. Not correct for any header.
+    //FIXME: This is gnarly
+    subscript(name: String) -> String? {
         set {
             assert(!didWriteHeader, "header is out!")
             if let v = newValue {
@@ -73,11 +74,6 @@ public extension ServerResponse {
             return headers[name].joined(separator: ", ")
         }
     }
-}
-
-import Foundation
-
-public extension ServerResponse {
     
     /// Send a Codable object as JSON to the client.
     func json<T: Encodable>(_ model: T) {
@@ -105,11 +101,6 @@ public extension ServerResponse {
             .mapIfError(handleError)
             .map { self.end() }
     }
-}
-
-import mustache
-
-public extension ServerResponse {
     
     //https://www.alwaysrightinstitute.com/microexpress-nio-templates/
     func render(pathContext: String = #file, _ template : String, _ options: Any? = nil)
