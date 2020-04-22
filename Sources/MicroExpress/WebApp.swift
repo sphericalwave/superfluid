@@ -10,7 +10,7 @@ import Foundation
 import NIO
 import NIOHTTP1
 
-open class Express
+open class WebApp
 {
     let router: Router
     let port: Int
@@ -31,7 +31,7 @@ open class Express
             .serverChannelOption(reuseAddrOpt, value: 1)
             .childChannelInitializer { channel in
                 channel.pipeline.configureHTTPServerPipeline().then {
-                    channel.pipeline.add(handler: HTTPHandler(router: self.router))
+                    channel.pipeline.add(handler: HTTPReceiver(router: self.router))
                 }
             }
             .childChannelOption(ChannelOptions.socket(IPPROTO_TCP, TCP_NODELAY), value: 1)

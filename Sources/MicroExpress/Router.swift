@@ -8,7 +8,7 @@
 
 open class Router
 {
-    private var middleware = [ Middleware ]() //FIXME: Be Immutable /// The sequence of Middleware functions.
+    private var middleware = [Middleware]() //FIXME: Be Immutable /// The sequence of Middleware functions.
     
     //FIXME: Be Immutable
     /// Add another middleware (or many) to the list

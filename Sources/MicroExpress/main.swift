@@ -13,7 +13,7 @@ let eventLoops = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
 let threadPool = BlockingIOThreadPool(numberOfThreads: 4)
 let fileIO = NonBlockingFileIO(threadPool: threadPool)
 let files = Files(eventLoops: eventLoops, threadPool: threadPool, fileIO: fileIO)
-let app = Express(host: "localhost", port: 8080, router: router, eventLoops: eventLoops)
+let app = WebApp(host: "localhost", port: 8080, router: router, eventLoops: eventLoops)
 
 //TODO: Why is this here?
 //fs.readFile("/etc/passwd") { err, data in
