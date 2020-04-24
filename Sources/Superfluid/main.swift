@@ -14,8 +14,7 @@ import NIO
 
 let router = Router()
 
-//FIXME: what is CORS? // Reusable middleware up here
-router.use(middleware: querystring, cors(allowOrigin: "*"))
+router.use(middleware: querystring, cors(allowOrigin: "*"))  //FIXME: what is CORS? // Reusable middleware up here
 
 // Logging
 router.use { req, res, next in
@@ -28,8 +27,7 @@ router.get(path: "/todos") { _, res, _ in
 }
 
 router.get(path: "/todomvc") { _, res, _ in
-    // send JSON to the browser
-    res.json(model: todos)
+    res.json(model: todos)      // send JSON to the browser
 }
 
 router.get(path: "/moo") { req, res, next in
@@ -37,8 +35,7 @@ router.get(path: "/moo") { req, res, next in
 }
 
 router.get { req, res, _ in
-    // `param` is provided by querystring
-    let text = req.param(id: "text") ?? "Schwifty"
+    let text = req.param(id: "text") ?? "Schwifty"      // `param` is provided by querystring
     res.send(s: "Hello, \(text) world!")
 }
 
