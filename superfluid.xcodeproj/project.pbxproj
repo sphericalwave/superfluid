@@ -16,6 +16,12 @@
 		AF989FA728E5B1DD00469C7F /* superfluidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FA628E5B1DD00469C7F /* superfluidTests.swift */; };
 		AF989FB128E5B1DD00469C7F /* superfluidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FB028E5B1DD00469C7F /* superfluidUITests.swift */; };
 		AF989FB328E5B1DD00469C7F /* superfluidUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FB228E5B1DD00469C7F /* superfluidUITestsLaunchTests.swift */; };
+		AF989FC028E5B23D00469C7F /* TabUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FBF28E5B23D00469C7F /* TabUi.swift */; };
+		AF989FC228E5B2AD00469C7F /* LogUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FC128E5B2AD00469C7F /* LogUi.swift */; };
+		AF989FC428E5B52200469C7F /* MovesUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FC328E5B52200469C7F /* MovesUi.swift */; };
+		AF989FC628E5B53A00469C7F /* StatsUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FC528E5B53A00469C7F /* StatsUi.swift */; };
+		AF989FC828E5B55C00469C7F /* PlansUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FC728E5B55C00469C7F /* PlansUi.swift */; };
+		AF989FCA28E5B56B00469C7F /* SocialUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF989FC928E5B56B00469C7F /* SocialUi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,12 @@
 		AF989FAC28E5B1DD00469C7F /* superfluidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = superfluidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF989FB028E5B1DD00469C7F /* superfluidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = superfluidUITests.swift; sourceTree = "<group>"; };
 		AF989FB228E5B1DD00469C7F /* superfluidUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = superfluidUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AF989FBF28E5B23D00469C7F /* TabUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabUi.swift; sourceTree = "<group>"; };
+		AF989FC128E5B2AD00469C7F /* LogUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUi.swift; sourceTree = "<group>"; };
+		AF989FC328E5B52200469C7F /* MovesUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesUi.swift; sourceTree = "<group>"; };
+		AF989FC528E5B53A00469C7F /* StatsUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsUi.swift; sourceTree = "<group>"; };
+		AF989FC728E5B55C00469C7F /* PlansUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansUi.swift; sourceTree = "<group>"; };
+		AF989FC928E5B56B00469C7F /* SocialUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialUi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +112,12 @@
 			children = (
 				AF989F9028E5B1DD00469C7F /* superfluidApp.swift */,
 				AF989F9228E5B1DD00469C7F /* ContentView.swift */,
+				AF989FBF28E5B23D00469C7F /* TabUi.swift */,
+				AF989FC528E5B53A00469C7F /* StatsUi.swift */,
+				AF989FC328E5B52200469C7F /* MovesUi.swift */,
+				AF989FC128E5B2AD00469C7F /* LogUi.swift */,
+				AF989FC728E5B55C00469C7F /* PlansUi.swift */,
+				AF989FC928E5B56B00469C7F /* SocialUi.swift */,
 				AF989F9428E5B1DD00469C7F /* Assets.xcassets */,
 				AF989F9928E5B1DD00469C7F /* Persistence.swift */,
 				AF989F9B28E5B1DD00469C7F /* superfluid.xcdatamodeld */,
@@ -264,7 +282,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF989F9A28E5B1DD00469C7F /* Persistence.swift in Sources */,
+				AF989FC428E5B52200469C7F /* MovesUi.swift in Sources */,
+				AF989FC828E5B55C00469C7F /* PlansUi.swift in Sources */,
+				AF989FC228E5B2AD00469C7F /* LogUi.swift in Sources */,
+				AF989FCA28E5B56B00469C7F /* SocialUi.swift in Sources */,
 				AF989F9328E5B1DD00469C7F /* ContentView.swift in Sources */,
+				AF989FC028E5B23D00469C7F /* TabUi.swift in Sources */,
+				AF989FC628E5B53A00469C7F /* StatsUi.swift in Sources */,
 				AF989F9D28E5B1DD00469C7F /* superfluid.xcdatamodeld in Sources */,
 				AF989F9128E5B1DD00469C7F /* superfluidApp.swift in Sources */,
 			);
